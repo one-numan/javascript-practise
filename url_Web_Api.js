@@ -31,18 +31,26 @@ for (let obj_key of location_api_obj_keys) {
 function createTable() {
   // Create the table element.
   const table = document.createElement("table");
-  table.classList.add = ".table";
+  table.setAttribute("class", "table table-responsive");
+
   // table.classList.add("table");
   table.setAttribute("border", "1");
 
   // Create the table header row.
   const headerRow = document.createElement("tr");
   const headerCell1 = document.createElement("th");
+
   const headerCell2 = document.createElement("th");
+  const headerCell3 = document.createElement("th");
   headerCell1.textContent = "Keys";
   headerCell2.textContent = "Values";
+
+  headerCell3.textContent = "Syntax";
+
   headerRow.appendChild(headerCell1);
   headerRow.appendChild(headerCell2);
+  headerRow.appendChild(headerCell3);
+
   table.appendChild(headerRow);
 
   for (let obj_key of location_api_obj_keys) {
@@ -50,10 +58,19 @@ function createTable() {
     const dataCell11 = document.createElement("td");
     dataCell11.style.fontWeight = "Bold";
     const dataCell12 = document.createElement("td");
+
+    const dataCell13 = document.createElement("td");
+
     dataCell11.textContent = obj_key;
     dataCell12.textContent = location[obj_key];
+
+    dataCell13.textContent = `location['${obj_key}']`;
+
     dataRow1.appendChild(dataCell11);
     dataRow1.appendChild(dataCell12);
+
+    dataRow1.appendChild(dataCell13);
+
     table.appendChild(dataRow1);
     let val = location[obj_key];
     if (val.length == 0) {
