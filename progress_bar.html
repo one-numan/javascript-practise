@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<style>
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+
+    #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: #04AA6D;
+    }
+</style>
+
+<body>
+
+    <h1>JavaScript Progress Bar</h1>
+
+    <div id="myProgress">
+        <div id="myBar"></div>
+    </div>
+    <p id="runningStatus">Increasing</p>
+    <br>
+    <button onclick="move()">Click Me</button>
+
+    <script>
+        var i = 0;
+        const runningStatus = document.getElementById('runningStatus')
+        function move() {
+            if (i == 0) {
+                i = 1;
+                var elem = document.getElementById("myBar");
+                var width = 1;
+                var id = setInterval(frame, 60);
+                function frame() {
+                    if (width >= 100) {
+
+                        runningStatus.innerText = 'done';
+                        clearInterval(id);
+                        i = 0;
+                    } else {
+                        width++;
+                        runningStatus.innerText = width;
+                        elem.style.width = width + "%";
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
